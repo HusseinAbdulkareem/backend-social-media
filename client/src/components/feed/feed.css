@@ -1,0 +1,15 @@
+.feed {
+  flex: 6;
+  background-color: #ffffff;
+  min-height: calc(100vh - 50px);
+}
+
+.feedWrapper {
+  padding: 20px 24px;
+  width: 90%;
+  /* max-width: 680px; */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

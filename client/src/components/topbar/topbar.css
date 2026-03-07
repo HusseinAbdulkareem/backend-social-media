@@ -1,0 +1,220 @@
+.topbarContainer {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #1877f2 0%, #0d5bbf 100%);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.topbarLeft {
+  flex: 1;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.topbarCenter {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 380px;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 30px;
+  padding: 7px 16px;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.searchbar:focus-within {
+  background-color: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.searchbar svg {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+}
+
+.topbarRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.topbarLinks {
+  display: flex;
+  gap: 14px;
+}
+
+.topbarLink {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+  white-space: nowrap;
+}
+
+.topbarLink:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+.topbarIcons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topbarIconItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+
+.topbarIconItem:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+  transform: scale(1.08);
+}
+
+.topbarIconItem svg {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.topbarIconBadge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 50px;
+  background-color: #e74c3c;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #1877f2;
+  line-height: 1;
+}
+
+.topbarLogoutBtn {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.topbarLogoutBtn:hover {
+  background-color: rgba(231, 76, 60, 0.75);
+  border-color: transparent;
+}
+
+.topbarImg {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.15s;
+}
+
+.topbarImg:hover {
+  border-color: #ffffff;
+  transform: scale(1.07);
+}
+
+@media (max-width: 768px) {
+  .topbarLinks {
+    display: none;
+  }
+
+  .topbarCenter {
+    flex: 3;
+  }
+
+  .logo {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchbar {
+    max-width: 180px;
+    padding: 6px 10px;
+  }
+
+  .topbarIconItem {
+    width: 30px;
+    height: 30px;
+  }
+
+  .topbarImg {
+    width: 30px;
+    height: 30px;
+  }
+}
