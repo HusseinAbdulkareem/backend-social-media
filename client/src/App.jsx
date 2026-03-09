@@ -13,6 +13,7 @@ function App() {
   return (
     <div>
       <Routes>
+        if (!userToken) {localStorage.removeItem("userToken")}
         <Route
           path="/"
           element={userToken ? <Home /> : <Navigate to="/login" />}
@@ -21,12 +22,10 @@ function App() {
           path="/profile/:username"
           element={userToken ? <Profile /> : <Navigate to="/login" />}
         />
-
         <Route
           path="/messanger"
           element={!userToken ? <Navigate to="/login" /> : <Messanger />}
         />
-
         <Route
           path="/login"
           element={userToken ? <Navigate to="/" /> : <Login />}

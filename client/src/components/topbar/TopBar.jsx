@@ -64,7 +64,7 @@ function TopBar() {
             textDecoration: "none",
           }}
         >
-          <span className="logo"> Programmer : Hussein Abdulkareem</span>
+          <span className="logo"> Social Media </span>
         </Link>
       </div>
       <div className="topbarCenter">
@@ -103,8 +103,16 @@ function TopBar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
+          <Link
+            style={{
+              textDecoration: "none",
+            }}
+            to="/"
+            className="topbarLink"
+          >
+            HomePage
+          </Link>
+          {/* <span className="topbarLink">Timeline</span> */}
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
