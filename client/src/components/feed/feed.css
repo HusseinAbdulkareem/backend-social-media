@@ -4,6 +4,36 @@
   min-height: calc(100vh - 50px);
 }
 
+.feedEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #65676b;
+}
+
+.feedEmptyImg {
+  width: 100px;
+  height: 100px;
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+
+.feedEmptyTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1e21;
+  margin: 0 0 8px;
+}
+
+.feedEmptyText {
+  font-size: 14px;
+  color: #65676b;
+  margin: 0;
+}
+
 .feedWrapper {
   padding: 20px 24px;
   width: 90%;

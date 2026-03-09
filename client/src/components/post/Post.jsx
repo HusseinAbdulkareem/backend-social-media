@@ -44,7 +44,12 @@ export default function Post({ post }) {
             <Link to={`/profile/${user?.username}`}>
               <img
                 className="postProfileImg"
-                src={user ? user.profilePicture : <MdPerson />}
+                src={
+                  user
+                    ? user.profilePicture
+                    : <MdPerson /> ||
+                      "https://i.fbcd.co/products/resized/resized-1500-1000/d4c961732ba6ec52c0bbde63c9cb9e5dd6593826ee788080599f68920224e27d.webp"
+                }
                 alt={user?.username}
               />
             </Link>
@@ -67,11 +72,7 @@ export default function Post({ post }) {
             </span>
           }
           {post.img && (
-            <img
-              className="postImg"
-              src={`/images/${post.img}`}
-              alt="post"
-            />
+            <img className="postImg" src={`/images/${post.img}`} alt="post" />
           )}
         </div>
 

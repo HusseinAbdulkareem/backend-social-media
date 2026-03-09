@@ -81,25 +81,29 @@ function ProfileRightbar({ user, friends }) {
       </div>
       <h4 className="rightbarTitle">User friends</h4>
       <div className="rightbarFollowings">
-        {friends.map((friend) => (
-          <Link
-            style={{ textDecoration: "none" }}
-            to={`/profile/${friend.username}`}
-            key={friend._id}
-          >
-            <div className="rightbarFollowing">
-              <img
-                src={
-                  friend.profilePicture ||
-                  "https://i.fbcd.co/products/resized/resized-1500-1000/d4c961732ba6ec52c0bbde63c9cb9e5dd6593826ee788080599f68920224e27d.webp"
-                }
-                alt=""
-                className="rightbarFollowingImg"
-              />
-              <span className="rightbarFollowingName">{friend.username}</span>
-            </div>
-          </Link>
-        ))}
+        {friends.length === 0 ? (
+          <p className="rightbarNoFriends">No friends yet</p>
+        ) : (
+          friends.map((friend) => (
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/profile/${friend.username}`}
+              key={friend._id}
+            >
+              <div className="rightbarFollowing">
+                <img
+                  src={
+                    friend.profilePicture ||
+                    "https://i.fbcd.co/products/resized/resized-1500-1000/d4c961732ba6ec52c0bbde63c9cb9e5dd6593826ee788080599f68920224e27d.webp"
+                  }
+                  alt=""
+                  className="rightbarFollowingImg"
+                />
+                <span className="rightbarFollowingName">{friend.username}</span>
+              </div>
+            </Link>
+          ))
+        )}
       </div>
     </>
   );

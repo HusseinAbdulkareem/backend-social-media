@@ -59,7 +59,10 @@ export default function Share() {
         {file && (
           <div className="shareImgContainer">
             <img src={URL.createObjectURL(file)} className="shareImg" alt="" />
-            <MdCancel className="shareCancelImg" onClick={() => setFile(null)} />
+            <MdCancel
+              className="shareCancelImg"
+              onClick={() => setFile(null)}
+            />
           </div>
         )}
 

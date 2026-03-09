@@ -34,9 +34,18 @@ export default function Feed({ username }) {
     <div className="feed">
       <div className="feedWrapper">
         {!username || username === userToken?.username ? <Share /> : null}
-        {posts.map((p) => (
-          <Post key={p._id} post={p} />
-        ))}
+        {posts.length === 0 ? (
+          <div className="feedEmpty">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png"
+              alt="no posts"
+              className="feedEmptyImg"
+            />
+            <h3 className="feedEmptyTitle">No posts yet</h3>
+          </div>
+        ) : (
+          posts.map((p) => <Post key={p._id} post={p} />)
+        )}
       </div>
     </div>
   );

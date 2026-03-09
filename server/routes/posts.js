@@ -64,6 +64,7 @@ router.get("/timeline/:userId", async (req, res) => {
   //   let postArray = [];
   try {
     const currentUser = await User.findById(req.params.userId);
+    if (!currentUser) return res.status(404).json("User not found");
     const userPosts = await Post.find({ userId: currentUser._id });
     const friendPost = await Promise.all(
       currentUser.followings.map((friendId) => {
@@ -82,6 +83,7 @@ router.get("/profile/:username", async (req, res) => {
     const user = await User.findOne({
       username: req.params.username,
     });
+    if (!user) return res.status(404).json("User not found");
     const posts = await Post.find({ userId: user._id });
     res.status(200).json(posts);
   } catch (err) {

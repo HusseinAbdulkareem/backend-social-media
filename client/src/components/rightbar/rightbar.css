@@ -204,6 +204,14 @@ ul {
   display: block;
 }
 
+.rightbarNoFriends {
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
 .rightbarFollowingName {
   font-size: 12px;
   font-weight: 600;

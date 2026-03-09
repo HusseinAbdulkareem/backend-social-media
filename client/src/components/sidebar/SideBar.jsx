@@ -14,7 +14,7 @@ import {
 
 import { Users } from "../../dummyData";
 import CloseFriend from "../closeFriend/CloseFriend";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 
@@ -49,10 +49,19 @@ export default function Sidebar() {
               <span className="sidebarListItemText">Feed</span>
             </li>
           </Link>
-          <li className="sidebarListItem">
-            <FaComments className="sidebarIcon" />
-            <span className="sidebarListItemText">Chats</span>
-          </li>
+
+          <Link
+            style={{
+              textDecoration: "none",
+            }}
+            to={"/messanger"}
+          >
+            <li className="sidebarListItem">
+              <FaComments className="sidebarIcon" />
+              <span className="sidebarListItemText">Chats</span>
+            </li>
+          </Link>
+
           <li className="sidebarListItem">
             <FaPlayCircle className="sidebarIcon" />
             <span className="sidebarListItemText">Videos</span>
@@ -85,7 +94,7 @@ export default function Sidebar() {
         {/* <button className="sidebarButton">Show More</button> */}
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
-          <h1 className="closeFrined">Close Friend</h1>
+          <h1 className="closeFrined">Close Friends</h1>
 
           {Users.map((u) => (
             <CloseFriend key={u.id} user={u} />
