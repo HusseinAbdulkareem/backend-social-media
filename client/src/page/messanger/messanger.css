@@ -1,3 +1,19 @@
+/* Modern no conversation placeholder styles */
+.noConversationText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #888;
+  font-size: 1.2rem;
+  gap: 16px;
+}
+
+.noConversationIcon {
+  font-size: 3rem;
+  color: #bbb;
+}
 .messanger {
   height: calc(100vh - 70px);
   display: flex;
@@ -124,7 +140,7 @@
   flex: 1;
   min-height: 46px;
   max-height: 130px;
-  padding: 12px 18px;
+  padding: 10px 16px;
   border: 1.5px solid #e4e6eb;
   border-radius: 24px;
   background: #f0f2f5;
@@ -147,7 +163,6 @@
 .chatMessageInput:focus {
   border-color: #7c6ef2;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(124, 110, 242, 0.12);
 }
 
 .chatSubmitButton {
