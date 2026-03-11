@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./conversation.css";
 import axios from "../../hooks/useAxios";
 
-function Conversation({ conversation }) {
+function Conversation({ conversation, currentUserId }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const friendId = conversation.members.find((m) => m !== user?._id);
+    const friendId = conversation.members.find((m) => m !== currentUserId);
     const getUser = async () => {
       try {
         const res = await axios.get("/users?userId=" + friendId);
@@ -16,7 +16,7 @@ function Conversation({ conversation }) {
       }
     };
     getUser();
-  }, [conversation]);
+  }, [conversation, currentUserId]);
   return (
     <div className="conversation">
       <div className="conversationImgWrapper">
@@ -31,10 +31,6 @@ function Conversation({ conversation }) {
         <span className="conversationOnlineDot"></span>
       </div>
       <span className="conversationName">{user?.username}</span>
-      {/* <div className="conversationInfo">
-        <span className="conversationLastMsg">Hey, what's up? </span>
-      </div>
-      <span className="conversationBadge">2</span> */}
     </div>
   );
 }

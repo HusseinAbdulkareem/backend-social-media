@@ -1,71 +1,30 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+
 import "./messanger.css";
 import TopBar from "../../components/topbar/TopBar";
 import Conversation from "../../components/conversation/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
-import { Context } from "../../context/Context";
-import axios from "../../hooks/useAxios";
+import { useMessanger } from "../../hooks/useMessanger";
 
 function Messanger() {
-  const { userToken } = useContext(Context);
-  const [conversations, setConversations] = useState([]);
-  const [currentChat, setCurrentChat] = useState(null);
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-  const scrollRef = useRef();
-
-  useEffect(() => {
-    const getConversation = async () => {
-      const response = await axios.get("/conversations/" + userToken._id);
-      setConversations(response.data);
-    };
-    getConversation();
-  }, [userToken._id]);
-
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const response = await axios.get("/messages/" + currentChat?._id);
-        setMessages(response.data);
-      } catch (Err) {
-        console.log(Err);
-      }
-    };
-
-    if (currentChat) {
-      getMessages();
-    }
-  }, [currentChat]);
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const handleSendMessage = async () => {
-    if (newMessage.trim() === "") return;
-
-    const message = {
-      sender: userToken._id,
-      text: newMessage,
-      conversationId: currentChat._id,
-    };
-
-    try {
-      const response = await axios.post("/messages", message);
-      setMessages([...messages, response.data]);
-      setNewMessage("");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const {
+    conversations,
+    currentChat,
+    setCurrentChat,
+    messages,
+    newMessage,
+    setNewMessage,
+    handleSendMessage,
+    scrollRef,
+    userToken,
+  } = useMessanger();
 
   return (
     <>
       <TopBar />
 
       <div className="messanger">
-        {/*   conversations list */}
+        {/* conversations list */}
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             <h3>Messages</h3>
@@ -76,8 +35,8 @@ function Messanger() {
             />
             <div className="chatMenuConversations">
               {conversations.map((c) => (
-                <div key={c._id} className="" onClick={() => setCurrentChat(c)}>
-                  <Conversation conversation={c} />
+                <div key={c._id} onClick={() => setCurrentChat(c)}>
+                  <Conversation conversation={c} currentUserId={userToken._id} />
                 </div>
               ))}
             </div>
@@ -93,7 +52,6 @@ function Messanger() {
                   {messages.map((m) => (
                     <div ref={scrollRef} key={m._id}>
                       <Message
-                        key={m._id}
                         message={m}
                         own={m.sender === userToken._id}
                       />
@@ -113,7 +71,7 @@ function Messanger() {
                         handleSendMessage();
                       }
                     }}
-                  ></textarea>
+                  />
                   <button
                     className="chatSubmitButton"
                     onClick={handleSendMessage}
@@ -137,13 +95,13 @@ function Messanger() {
                     fill="#bbb"
                   />
                 </svg>
-                <span> Open a conversation to start chatting </span>
+                <span>Open a conversation to start chatting</span>
               </div>
             )}
           </div>
         </div>
 
-        {/*  online friends */}
+        {/* online friends */}
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
             <h4>Online Now</h4>

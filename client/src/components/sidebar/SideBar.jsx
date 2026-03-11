@@ -19,7 +19,7 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 
 export default function Sidebar() {
-  const { userToken, removeUserToken } = useContext(Context);
+  const { userToken } = useContext(Context);
 
   return (
     <div className="sidebar">
@@ -92,14 +92,14 @@ export default function Sidebar() {
           </li>
         </ul>
         {/* <button className="sidebarButton">Show More</button> */}
-        <hr className="sidebarHr" />
+        {/* <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
           <h1 className="closeFrined">Close Friends</h1>
 
           {Users.map((u) => (
             <CloseFriend key={u.id} user={u} />
           ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
